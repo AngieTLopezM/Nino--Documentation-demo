@@ -1,25 +1,42 @@
+# Nino--Documentation-demo
+Technical documentation for data warehouse
+
+# NINO DATA WAREHOUSE  
+**TECHNICAL DOCUMENTATION**  
+
+## Chapter 1: Introduction to the NINO System  
+
+**Cora Group**  
+**2025**  
+
+---
+
+## Document Version Control
+
+| Version | Purpose/Change | Author      | Date        |
+|---------|----------------|-------------|-------------|
+| 1       |                | Angie Lopez | 20/05/2025  |
 
 
 
 
+---
 
-NINO DATA WAREHOUSE
-TECHNICAL DOCUMENTATION
+## Table of Contents
 
+- [NINO DATA WAREHOUSE](#nino-data-warehouse)
+  - [Chapter 2: Staging area](#chapter-2-Staging-area)
+  - [Document Version Control](#document-version-control)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#Overview)
+  - [Introduction](#introduction)
+  - [Objective](#Objetive)
+  - [Resources](#Resoruces)
+  - [Data Processing Flow](#Data Processing Flow)
+  - [Outcomes](#Outcomes)
+  - [Appendices](#Appendices)
 
-
-Cora Group
-
-
-
-
-2025
-
-
-
-
-Document Version Control
-
+---
 
 
 
@@ -29,9 +46,13 @@ Document Version Control
 ## Overview
 ### Executive Overview
 This chapter defines the foundational role of the Staging Area in the NINO System, detailing its critical function in acquiring and securely storing data from the Machship Transport Management System (TMS). Positioned as the initial interface in the NINO data ingestion pipeline, this layer ensures that all external logistics data is validated, secured, and structured before entering downstream transformation processes.
+
 The ingestion process is based on an incremental model, where JSON-formatted files containing up to 500 records are exported from Machship and uploaded to the live-zip folder in Azure Blob Storage every two hours. Each batch concludes with the appearance of a control file (tx_0.complete) to signal readiness, while a blank.txt file prevents folder deletion if no data is present.
+
 The system architecture places a strong emphasis on security and scalability. Data uploads are executed via SAS tokens issued by Synfo, which enable time-limited, permission-scoped access without exposing underlying platform credentials. The token lifecycle and access governance are managed under the supervision of Cora Group. Additionally, the ingestion strategy supports growth in dataset volume and can accommodate changes in cadence or table count with minimal reconfiguration.
+
 The chapter further introduces comprehensive metadata and schema references, enabling internal teams to navigate and interpret incoming data structures. Key entities include carrier accounts, invoice entries, item references, and tracking records.
+
 In conclusion, this chapter recommends maintaining the SAS token model as a best practice for secure external data exchange, regularly reviewing ingestion frequency to meet operational demand, and keeping schema documentation up to date for consistent downstream integration. These principles uphold NINO’s reliability, auditability, and data integrity standards.
 
 Specialised Analytical Summary for Information Systems
